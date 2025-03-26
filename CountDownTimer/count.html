@@ -9,14 +9,14 @@
 </head>
 <body>
     <div class="name">Timer</div>
-    <div class="clock">
+    <div class="clock" id="circle">
         <div class="timerbox">
             <div class="timer">
-                <div class="num">01</div>
+                <div class="num" id="hour">01</div>
                 <div class="dot">:</div>
-                <div class="num">59</div>
+                <div class="num" id="minute">59</div>
                 <div class="dot">:</div>
-                <div class="num">59</div>
+                <div class="num" id="second">59</div>
             </div>
             <div class="total_time">
                 <p>Total</p>
@@ -29,6 +29,10 @@
         <div class="color_mode" id="page_mode">
             <span><i class="fas fa-sun"></i></span>
         </div>
+    </div>
+    <div class="buttons">
+        <div class="end"><div class="squre"></div></div>
+        <div class="start" id="start"><i class="fas fa-play" id="play"></i></div>
     </div>
     <script src="count.js"></script>
 </body>
