@@ -1,0 +1,89 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #1f1e22;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.name{
+    color: rgb(247, 247, 247);
+    text-align: center;
+    font-size: 40px;
+    font-family :system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight:lighter;
+    margin: 10px;
+    transition: all 0.2s ease 0s;
+}
+.clock{
+    background-color: #232227;
+    height: 350px;
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 200px;
+    flex-direction: column;
+    box-shadow: rgba(21, 21, 21, 0.25) 0px 54px 55px, rgba(59, 57, 62, 0.12) 0px -12px 30px, rgba(59, 57, 62, 0.12) 0px 4px 6px, rgba(59, 57, 62, 0.17) 0px 12px 13px, rgba(59, 57, 62, 0.09) 0px -3px 5px;
+    transition: all 0.2s ease 0s;
+}
+.timer{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 65px;
+    color: #ffffff;
+    font-family :'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    transition: all 0.2s ease 0s;
+
+}
+.dot{
+    padding-bottom:10px ;
+}
+.total_time{
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+    justify-content: center;
+    font-size: 14px;
+    color: rgb(150, 150, 150);
+    font-family :'Courier New', Courier, monospace;
+}
+.timerbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.color_mode i{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    width: 40px;
+    font-size: 23px;
+    color: rgb(0, 0, 0);
+}
+.lightMode{
+    background-color: #f1f1f1;
+    transition: all 0.3s ease 0s;
+}
+.lightMode .clock{
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(37, 37, 37, 0.12) 0px -12px 30px, rgba(57, 57, 57, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(28, 28, 28, 0.09) 0px -3px 5px;
+
+
+}
+.lightMode .timer{
+    color: #232227;
+}
+.lightMode .name{
+    color: #232227;
+}

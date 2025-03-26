@@ -1,0 +1,108 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    background-color: #f45a74;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wall{
+    height: 90vh;
+    width: 80%;
+    max-width: 1200px;
+    background-color: rgb(255, 231, 231);
+    border-radius: 40px;
+    padding: 10px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    display: flex;
+    flex-direction: column;
+    overflow:hidden;
+}
+.image_container::-webkit-scrollbar{
+    border-radius: 20px;
+}
+.header{
+    font-family: cursive;
+    font-size: 2rem;
+    color: #1f4a5d;
+    justify-content: center;
+    display: flex;
+    padding: 5px;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.22);
+    flex-shrink: 0;
+}
+.image_container{
+    flex: 1;
+    columns: 3;
+    overflow:visible;
+    border-radius: 20px;
+    gap: 7px;
+    overflow-y: auto;
+
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(180deg, rgb(131, 71, 159) 3%, rgba(255,255,255,0.7002450638458508) 33%, rgba(244,90,116,1) 83%);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+
+}
+::-webkit-scrollbar-thumb {
+    background-color: #f5415f;
+    border-radius: 10px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 20px -10px;
+    transition: all 0.2s ease 0s;
+
+}
+::-webkit-scrollbar-thumb:hover{
+    box-shadow: rgb(38, 57, 77) 0px 20px 20px -10px;
+    border: 1px solid rgb(82, 0, 0);
+
+}
+::-webkit-resizer{
+    height: 50px;
+}
+.image_box{
+    width: 100%;
+    margin-bottom: 10px;
+    overflow: hidden;
+    border-radius: 20px;
+    break-inside: avoid-column;
+    transition: all 0.3s ease;
+    box-shadow: rgb(104, 125, 148) 0px 10px 10px -5px;
+}
+.image_box:hover{
+    box-shadow: rgb(38, 57, 77) 0px 20px 20px -10px;
+}
+.image_box img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.image_box:hover img {
+    transform: scale(1.05);
+}
+@media (max-width: 900px) {
+    .image_container {
+        column-count: 2;
+    }
+    .wall{
+        max-width: 600px;
+    }
+}

@@ -1,0 +1,95 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    background-color: #c09bff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card{
+    width: 90%;
+    max-width: 350px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fafafa;
+    padding: 25px;
+    border-radius: 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    gap: 7px;
+}
+.product img{
+    height: 240px;
+    transition: all 0.3s ease 0s;;
+}
+.product img:hover{
+    scale: 1.07;
+}
+.product{
+    height: 250px;
+    width: 300px;
+    background-color: #c63c3cde;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.prod_info{
+    width: 300px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-family: cursive;
+    font-weight: 600;
+    padding-top: 5px;
+    padding-bottom: 5px;}
+.price_card{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    height: 50px;
+    font-size: 35px;
+    font-weight: 800;
+    color: #684CE4;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.Price{
+    cursor: pointer;
+}
+.cart{
+    height: 35px;
+    width: 35px;
+    background-color: #fff;
+    border-radius: 12px;
+    margin-top: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2px;
+    color: lightgray;
+    transition: all 0.2s ease 0s;
+
+}
+.cart:hover{
+    background-color: #d0fffb;
+    color: #7d66e4;
+}
+i{
+    font-size: 25px;
+}
+.clicked{
+    color: #684CE4;
+}
