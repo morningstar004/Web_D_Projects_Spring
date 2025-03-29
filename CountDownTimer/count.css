@@ -167,3 +167,27 @@ body{
 .lightMode .bordered{
     border: 3px solid #3351c8cb;
 }
+.speed_selection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 35px;
+}
+.small_circle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #efefef;
+    height: 60px;
+    width: 60px;
+    background-color: #232227;
+    border-radius: 30px;
+    box-shadow: rgba(90, 90, 90, 0.1) 0px 4px 12px;
+    transition: all 0.2s ease 0s;
+    border: 1px solid #282730;
+}
+.small_circle:hover{
+    scale:0.95;
+    background-color:#38373e;
+}
