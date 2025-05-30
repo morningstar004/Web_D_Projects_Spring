@@ -44,7 +44,7 @@ body{
     font-family: "Bebas Neue", sans-serif;
     font-weight: 100;
     font-style: normal;
-    margin: 0px 50px 0px 50px;
+    margin: 0px 50px 0px 30px;
     margin-top: 20px;
     margin-bottom: 20px;
     font-size:30px;
@@ -84,7 +84,7 @@ hr{
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
-    font-variation-settings:"wdth" 100;
+    font-variation-settings:"width" 100;
     font-size: 22px;
     display: flex;
     flex-direction: row;

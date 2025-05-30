@@ -66,19 +66,6 @@
     </div>
     <script src="index.js">
 
-        document.getElementById("copy_icon").addEventListener('click',function(){
-     const linkText = document.getElementById('copy_link').textContent;
-     navigator.clipboard.writeText(linkText).then(()=>{
-        const icon = document.querySelector('copyIcon i');
-        icon.classList.remove("fa-regular", "fa-copy");
-        icon.classList.add("fa-solid", "fa-check");
-        alert('copied!')
-        settimer(()=>{
-            icon.classList.remove("fa-solid", "fa-check");
-            icon.classList.add("fa-regular", "fa-copy");
-        },2000);
-    });
-});
     </script>
 </body>
 </html>

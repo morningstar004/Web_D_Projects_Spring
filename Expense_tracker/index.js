@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     addButton.addEventListener("click", function () {
         let amount = parseFloat(amountInput.value);
-        event.preventDefault();
+  
         
 
         if (isNaN(amount) || amount <= 0) {

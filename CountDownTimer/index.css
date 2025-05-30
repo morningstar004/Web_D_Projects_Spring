@@ -56,7 +56,8 @@ body{
     justify-content: center;
     font-size: 14px;
     color: rgb(150, 150, 150);
-    font-family :'Courier New', Courier, monospace;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
 }
 .timerbox{
     display: flex;
@@ -97,6 +98,16 @@ body{
     background-color:#efefef;
 
 }
+.lightMode .STOP{
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(37, 37, 37, 0.12) 0px -12px 30px, rgba(57, 57, 57, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(28, 28, 28, 0.09) 0px -3px 5px;
+    border: 1px solid #ffffff;
+}
+.lightMode .STOP:hover{
+    scale:0.95;
+    background-color:#efefef;
+
+}
 .lightMode .start{
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(37, 37, 37, 0.12) 0px -12px 30px, rgba(57, 57, 57, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(28, 28, 28, 0.09) 0px -3px 5px;
@@ -112,7 +123,7 @@ body{
     display: flex;
     align-items: center;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 220px;
 }
 .end{
@@ -121,11 +132,26 @@ body{
     height:50px;
     width: 50px;
     border-radius: 30px;
+    margin-right: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: rgba(90, 90, 90, 0.1) 0px 4px 12px;
     transition: all 0.2s ease 0s;
+}
+.STOP{
+    background-color:#232227;
+    border: 1px solid #282730;
+    height:70px;
+    width: 70px;
+    border-radius: 40px;
+    margin: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(90, 90, 90, 0.1) 0px 4px 12px;
+    transition: all 0.2s ease 0s; 
+     
 }
 .start{
     background-color:#232227;
@@ -155,11 +181,22 @@ body{
     background-color:#38373e;
 
 }
+.STOP:hover{
+    scale:0.95;
+    background-color:#38373e;
+
+}
 .squre{
     height: 17px;
     width: 17px;
     border-radius: 5px;
     background-color: #3351c8cb;
+}
+.squred{
+    height: 25px;
+    width: 25px;
+    border-radius: 7px;
+    background-color: #3351c8cb; 
 }
 .bordered{
     border: 2px solid #3351c8cb;
@@ -189,6 +226,7 @@ body{
     font-family :system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 500;
     cursor: pointer;
+    margin: -5px;
 }
 .small_circle:hover{
     scale:0.95;
@@ -208,9 +246,59 @@ body{
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 3px;
+    gap: 5px;
 }
 
-.total_time div {
+.total_time span {
     font-size: 14px;
+}
+
+@keyframes blinkBorder {
+    0% {
+      border-color: transparent;
+    }
+    50% {
+      border-color: #3351c8cb;
+    }
+    100% {
+      border-color: transparent;
+    }
+  }
+  
+  .blinking-border {
+    animation: blinkBorder 1s infinite;
+  }
+
+.inputs{
+  width: 80px;
+  height: 65px;
+  font-size: 55px;
+  padding: 0px;
+  margin: 2px;
+  text-align: center;
+  gap: 2px;
+  transition: all 0.2s ease 0s;
+    background-color:#232227;
+    font-family :'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #f1f1f1;
+    border: none;
+}
+.lightMode .inputs{
+    background-color: #fff;
+    color: #232227;
+}
+
+/* #custom-time-inputs button {
+  padding: 6px 12px;
+  margin-left: 10px;
+} */
+#setCustomTime{
+    font-size: 23px;
+    padding-left: 3px;
+    padding-top: 3px;
+}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

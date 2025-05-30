@@ -2,6 +2,13 @@ const mode = document.getElementById("page_mode");
 const body = document.body;
 const icon = mode.querySelector("i");
 
+window.addEventListener("DOMContentLoaded", () => {
+    setCustomboxAppear();
+    setCustomButtonAppear();
+    timerBoxDisappear();
+    
+});
+
 mode.addEventListener("click", function () {
     body.classList.toggle("lightMode");
 
@@ -20,9 +27,9 @@ const hour = document.getElementById("hour");
 const minute = document.getElementById("minute");
 const second = document.getElementById("second");
 
-let hours = 1;
-let minutes = 59;
-let seconds = 59;
+let hours = 0;
+let minutes = 0;
+let seconds = 0;
 let timer;
 let isRunning = false;
 
@@ -33,21 +40,22 @@ function updateDisplay() {
 }
 
 function timerUpdate() {
-    if (hours ===0 && minutes ===0 && seconds ===0){
-
-    
+    if (hours === 0 && minutes === 0 && seconds === 0) {
         clearInterval(timer);
         isRunning = false;
-        playIcon.classList.replace("fa-pause","fa-play");
+        playIcon.classList.replace("fa-pause", "fa-play");
+        circle.classList.remove("bordered");
+        alarmSound.play();
+        triggerAnimation();
         return;
     }
 
     seconds--;
-    if (seconds< 0){
-        seconds= 59;
+    if (seconds < 0) {
+        seconds = 59;
         minutes--;
-        if(minutes<0){
-            minutes= 59;
+        if (minutes < 0) {
+            minutes = 59;
             hours--;
         }
     }
@@ -56,16 +64,21 @@ function timerUpdate() {
     updateDisplay();
 }
 
-playButton.addEventListener("click", function(){
 
-    if (!isRunning) {
-        timer =setInterval(timerUpdate, 1000);
-        isRunning= true;
+playButton.addEventListener("click", function(){
+    const playIcon = document.getElementById("play");
+
+    timerBoxAppear();
+    setCustomboxDisappear();
+    
+    if (!isRunning ) {
+        timer = setInterval(timerUpdate, 1000);
+        isRunning = true;
         playIcon.classList.replace("fa-play", "fa-pause");
         circle.classList.add("bordered");
     } else {
         clearInterval(timer);
-        isRunning= false;
+        isRunning = false;
         playIcon.classList.replace("fa-pause", "fa-play");
         circle.classList.remove("bordered");
     }
@@ -85,8 +98,10 @@ tenSecButton.addEventListener("click",function(){
     seconds = 10;
 
     updateDisplay();
-    updateDisplayTimer()
-
+    updateDisplayTimer();
+    setCustomboxDisappear();
+    timerBoxAppear();
+    setCustomButtonDisappear();
     clearInterval(timer);
     timer = setInterval(timerUpdate,1000);
     isRunning = true;
@@ -102,8 +117,10 @@ tenMinButton.addEventListener("click",function(){
     seconds = 0;
 
     updateDisplay();
-    updateDisplayTimer()
-
+    updateDisplayTimer();
+    timerBoxAppear();
+    setCustomButtonDisappear();
+    setCustomboxDisappear();
     clearInterval(timer);
     timer = setInterval(timerUpdate,1000);
     isRunning = true;
@@ -119,33 +136,52 @@ sixHourButton.addEventListener("click",function(){
     seconds = 0;
 
     updateDisplay();
-    updateDisplayTimer()
-
+    updateDisplayTimer();
+    timerBoxAppear();
+    setCustomboxDisappear();
+    setCustomButtonDisappear();
     clearInterval(timer);
     timer = setInterval(timerUpdate,1000);
     isRunning = true;
 
     playIcon.classList.replace("fa-play", "fa-pause");
     circle.classList.add("bordered");
-
 })
 
-endbutton.addEventListener("click",function(){
+endbutton.addEventListener("click", function () {
+    clearInterval(timer);
+    isRunning = false;
+
+    alarmSound.pause();
+    alarmSound.currentTime = 0;
+
+    circle.classList.remove("bordered");
+    circle.classList.remove("blinking-border");
+    playIcon.classList.replace("fa-pause", "fa-play");
+
     hours = 0;
     minutes = 0;
     seconds = 0;
 
     updateDisplay();
-    updateDisplayTimer()
+    updateDisplayTimer();
+    timerBoxDisappear();
+    setCustomboxAppear();
+    setCustomButtonAppear();
+});
 
-    clearInterval(timer);
-    timer = setInterval(timerUpdate,1000);
-    isRunning = false;
 
-    playIcon.classList.replace("fa-pause", "fa-play");
-    circle.classList.remove("bordered");
+function timerBoxDisappear(){
+    const timer = document.getElementById("timer");
 
-})
+    timer.style.display = "none";
+}
+
+function timerBoxAppear(){
+    const timer = document.getElementById("timer");
+
+    timer.style.display = "flex";
+}
 
 const totalHour = document.getElementById("totalHour");
 const totalMin = document.getElementById("totalMin");
@@ -156,3 +192,150 @@ function updateDisplayTimer(){
     totalMin.textContent = `${String(minutes).padStart(2, "0")} minute${minutes !== 1 ? "s" : ""}`;
     totalSec.textContent = `${String(seconds).padStart(2, "0")} second${seconds !== 1 ? "s" : ""}`;
 }
+
+let animationInterval;
+
+
+function triggerAnimation() {
+    circle.classList.add("blinking-border");
+}
+
+
+
+const alarmSound = new Audio("alarm.wav");
+function timerUpdate() {
+    if (hours === 0 && minutes === 0 && seconds === 0) {
+        clearInterval(timer);
+        isRunning = false;
+        playIcon.classList.replace("fa-pause", "fa-play");
+        circle.classList.remove("bordered");
+
+        alarmSound.play();
+        appearStopButton();
+        triggerAnimation();
+
+        return;
+    }
+    updateDisplay();
+}
+
+
+const inputHour = document.getElementById("inputHour");
+const inputMinute = document.getElementById("inputMinute");
+const inputSecond = document.getElementById("inputSecond");
+const setCustomTime = document.getElementById("setCustomTime");
+
+setCustomTime.addEventListener("click", function () {
+    // Get values and sanitize them
+    const h = parseInt(inputHour.value) || 0;
+    const m = parseInt(inputMinute.value) || 0;
+    const s = parseInt(inputSecond.value) || 0;
+
+    // Update global timer values
+    hours = h;
+    minutes = m;
+    seconds = s;
+
+    updateDisplay();
+    updateDisplayTimer();
+    timerBoxAppear();
+    setCustomboxDisappear();
+    clearInterval(timer);
+    setCustomButtonDisappear();
+    timer = setInterval(timerUpdate, 1000);
+    isRunning = true;
+
+    playIcon.classList.replace("fa-play", "fa-pause");
+    circle.classList.add("bordered");
+});
+
+function setCustomboxDisappear(){
+    const customTimer = document.getElementById("custom-time-inputs");
+
+    customTimer.style.display = "none";
+}
+
+function setCustomboxAppear(){
+    const customTimer = document.getElementById("custom-time-inputs");
+
+    customTimer.style.display = "flex";
+}
+
+function setCustomButtonDisappear(){
+    const setCustomButton = document.getElementById("setCustomTime");
+    const startbutton = document.getElementById("start");
+
+
+    setCustomButton.style.display = "none";
+    endbutton.style.display = "flex";
+    startbutton.style.display = "flex";
+    
+}
+
+
+
+function setCustomButtonAppear(){
+    const setCustomButton = document.getElementById("setCustomTime");
+    const stopButton = document.getElementById("STOP");
+    const startbutton = document.getElementById("start");
+
+    setCustomButton.style.display = "flex";
+    endbutton.style.display = "none";
+    startbutton.style.display = "none";
+    stopButton.style.display = "none";
+
+}
+
+function NeededDiv(){
+    const noNeed = document.getElementById("noNeed");
+
+    noNeed.style.display = "flex";
+}
+
+function noNeededDiv(){
+    const noNeed = document.getElementById("noNeed");
+
+    noNeed.style.display = "none";
+}
+
+function appearStopButton() {
+    const stopButton = document.getElementById("STOP");
+    const startbutton = document.getElementById("start");
+
+    endbutton.style.display = "none";
+    startbutton.style.display = "none";
+    tenSecButton.style.display = "none";
+    tenMinButton.style.display = "none";
+    sixHourButton.style.display = "none";
+    stopButton.style.display = "flex";
+    setCustomButtonDisappear();
+    noNeededDiv();
+}
+
+const stopButton = document.getElementById("STOP");
+
+stopButton.addEventListener("click", function () {
+    clearInterval(timer);
+    isRunning = false;
+
+    alarmSound.pause();
+    alarmSound.currentTime = 0;
+
+    circle.classList.remove("bordered");
+    circle.classList.remove("blinking-border");
+    playIcon.classList.replace("fa-pause", "fa-play");
+
+    hours = 0;
+    minutes = 0;
+    seconds = 0;
+
+    updateDisplay();
+    updateDisplayTimer();
+    timerBoxDisappear();
+    setCustomboxAppear();
+    setCustomButtonAppear();
+    NeededDiv();
+    tenMinButton.style.display = "flex";
+    tenSecButton.style.display = "flex";
+    sixHourButton.style.display = "flex";
+});

@@ -11,18 +11,27 @@
     <div class="name">Timer</div>
     <div class="clock" id="circle">
         <div class="timerbox">
-            <div class="timer">
+            <div class="timer" id="timer">
                 <div class="num" id="hour">01</div>
                 <div class="dot">:</div>
                 <div class="num" id="minute">59</div>
                 <div class="dot">:</div>
                 <div class="num" id="second">59</div>
             </div>
+            <div id="custom-time-inputs">
+                <input class="inputs" type="number" id="inputHour" placeholder="00" min="0" />
+                <!-- <div class="dot">:</div> -->
+                <input class="inputs" type="number" id="inputMinute" placeholder="00" min="0" max="59" />
+                <!-- <div class="dot">:</div> -->
+                <input class="inputs" type="number" id="inputSecond" placeholder="00" min="0" max="59" />
+                <!-- <button id="setCustomTime">Set Time</button> -->
+              </div>
+              
             <div class="total_time">
                 <p>Total</p>
-                <p><span id="totalHour">01 hour</span></p>
-                <p><span id="totalMin">59 minutes</span></p>
-                <p><span id="totalSec">59 seconds</span></p>
+                <p><span id="totalHour">00 hour</span></p>
+                <p><span id="totalMin">00 minutes</span></p>
+                <p><span id="totalSec">00 seconds</span></p>
             </div>
             
         </div>
@@ -30,9 +39,13 @@
             <span><i class="fas fa-sun"></i></span>
         </div>
     </div>
-    <div class="buttons">
+    <div class="buttons" id="noNeed">
         <div id="end" class="end"><div class="squre"></div></div>
+        <button class="small_circle" id="setCustomTime"><i class="fas fa-play"></i></button>
         <div class="start" id="start"><i class="fas fa-play" id="play"></i></div>
+    </div>
+    <div class="StopButton">
+        <div class="STOP" id="STOP"><div class="squred"></div></div>
     </div>
     <div class="speed_selection">
         <div id="tenSec" class="small_circle">10s</div>

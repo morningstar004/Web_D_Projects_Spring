@@ -1,14 +1,19 @@
 document.getElementById("copy_icon").addEventListener('click',function(){
     const linkText = document.getElementById('copy_link').textContent;
     navigator.clipboard.writeText(linkText).then(()=>{
-        const icon = document.querySelector('copyIcon i');
+        const icon = document.querySelector('copy_icon');
         icon.classList.remove('fa-copy');
         icon.classList.add('fa-check');
-        settimer(()=>{
-        icon.classList.remove('fa-copy');
-        icon.classList.add('fa-check');
-        },2000);
+        // settimer(()=>{
+        // icon.classList.remove('fa-copy');
+        // icon.classList.add('fa-check');
+        // },2000);
     });
+});
+
+const cart = document.getElementById("copy_icon");
+cart.addEventListener("click", function () {
+  cart.classList.toggle("clicked");
 });
 
 window.addEventListener("DOMContentLoaded", function () {
