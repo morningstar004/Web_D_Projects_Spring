@@ -216,38 +216,68 @@ function timerUpdate() {
 
         return;
     }
+    
+    seconds--;
+    if (seconds < 0) {
+        seconds = 59;
+        minutes--;
+        if (minutes < 0) {
+            minutes = 59;
+            hours--;
+        }
+    }
+
     updateDisplay();
 }
 
-
+np
 const inputHour = document.getElementById("inputHour");
 const inputMinute = document.getElementById("inputMinute");
 const inputSecond = document.getElementById("inputSecond");
 const setCustomTime = document.getElementById("setCustomTime");
 
 setCustomTime.addEventListener("click", function () {
-    // Get values and sanitize them
     const h = parseInt(inputHour.value) || 0;
     const m = parseInt(inputMinute.value) || 0;
     const s = parseInt(inputSecond.value) || 0;
 
-    // Update global timer values
     hours = h;
     minutes = m;
     seconds = s;
 
-    updateDisplay();
-    updateDisplayTimer();
-    timerBoxAppear();
-    setCustomboxDisappear();
-    clearInterval(timer);
-    setCustomButtonDisappear();
-    timer = setInterval(timerUpdate, 1000);
-    isRunning = true;
+    if(h === 0 && m === 0 && s === 0){
+        isRunning = false;
+    }else{
+        updateDisplay();
+        updateDisplayTimer();
+        timerBoxAppear();
+        setCustomboxDisappear();
+        clearInterval(timer);
+        setCustomButtonDisappear();
+        timer = setInterval(timerUpdate, 1000);
+        isRunning = true;
+        circle.classList.add("bordered");
+    }
+
 
     playIcon.classList.replace("fa-play", "fa-pause");
-    circle.classList.add("bordered");
 });
+
+setCustomTime.addEventListener("mouseover", function () {
+    const h = parseInt(inputHour.value) || 0;
+    const m = parseInt(inputMinute.value) || 0;
+    const s = parseInt(inputSecond.value) || 0;
+
+    hours = h;
+    minutes = m;
+    seconds = s;
+
+    if(h === 0 && m === 0 && s === 0){
+        setCustomTime.classList.add('disable');
+    }else{
+        setCustomTime.classList.remove('disable');
+    }    
+})    
 
 function setCustomboxDisappear(){
     const customTimer = document.getElementById("custom-time-inputs");
